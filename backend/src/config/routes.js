@@ -15,7 +15,9 @@ routes.post('/api/todos', async(req,res) => {
 })
 
 routes.put('/api/todos', async(req,res) => {
- 
+
+    console.log(req.body)
+    
      await Task.findOneAndUpdate({description: req.body.description},{done: req.body.done})
      
      res.end()
@@ -24,7 +26,7 @@ routes.put('/api/todos', async(req,res) => {
 
 routes.delete('/api/todos/:id', async(req,res) => {
 
-    console.log(req.params.id)
+    
     await Task.deleteOne({ _id: req.params.id })
 
     res.end() 
